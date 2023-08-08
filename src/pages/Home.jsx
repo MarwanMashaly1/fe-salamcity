@@ -1,6 +1,15 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { Box, Typography, Carousel } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  CardActionArea,
+} from "@mui/material";
+import { useStyles } from "@mui/styles";
+import Carousel from "react-material-ui-carousel";
 
 const featuredPosts = [
   {
@@ -35,9 +44,26 @@ const Home = () => {
             Featured
           </Typography>
           <Box sx={{ width: "100%", typography: "body1" }} component="div">
-            <Carousel classeName={classes.root}>
+            <Carousel>
               {featuredPosts.map((post, index) => (
-                <CardSwipeable key={index} item={post} />
+                <Card sx={{ maxWidth: 345 }} key={index}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={post.image}
+                      alt={post.imageLabel}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {post.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {post.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
               ))}
             </Carousel>
           </Box>
@@ -48,116 +74,3 @@ const Home = () => {
 };
 
 export default Home;
-
-function CardSwipeable(props) {
-  const classes = useStyles();
-  return (
-    <div classes={classes.root}>
-      <Card className={`${classes.root} ${classes.card}`}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.item.imgPath}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography
-              className={classes.typo}
-              gutterBottom
-              variant="h6"
-              component="h6"
-              color="secondary"
-            >
-              ${props.item.c}
-            </Typography>
-            <Typography
-              className={`${classes.typo} ${classes.mx}`}
-              variant="h5"
-              color="inherit"
-              component="h3"
-            >
-              {props.item.label}
-            </Typography>
-            <Typography
-              className={classes.typo}
-              color="textSecondary"
-              component="p"
-            >
-              {props.item.desc}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-      <Card className={`${classes.root} ${classes.card}`}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.item.imgPath}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography
-              className={classes.typo}
-              gutterBottom
-              variant="h6"
-              component="h6"
-              color="secondary"
-            >
-              ${props.item.c}
-            </Typography>
-            <Typography
-              className={`${classes.typo} ${classes.mx}`}
-              variant="h5"
-              color="inherit"
-              component="h3"
-            >
-              {props.item.label}
-            </Typography>
-            <Typography
-              className={classes.typo}
-              color="textSecondary"
-              component="p"
-            >
-              {props.item.desc}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-      <Card className={`${classes.root} ${classes.card}`}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.item.imgPath}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography
-              className={classes.typo}
-              gutterBottom
-              variant="h6"
-              component="h6"
-              color="secondary"
-            >
-              ${props.item.c}
-            </Typography>
-            <Typography
-              className={`${classes.typo} ${classes.mx}`}
-              variant="h5"
-              color="inherit"
-              component="h3"
-            >
-              {props.item.label}
-            </Typography>
-            <Typography
-              className={classes.typo}
-              color="textSecondary"
-              component="p"
-            >
-              {props.item.desc}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </div>
-  );
-}
