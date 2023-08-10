@@ -2,14 +2,17 @@ import React from "react";
 import {
   Box,
   Typography,
+  Button,
   Card,
   CardContent,
   CardMedia,
   CardActionArea,
-  Button,
+  Grid,
 } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import QuickLinks from "../components/QuickLinks";
+import PrayerTimesWidget from "../components/PrayerTimesWidget";
 
 const featuredPosts = [
   {
@@ -112,12 +115,13 @@ const Home = () => {
       <div className="featured">
         <Box
           sx={{
+            marginTop: "50px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
-            minHeight: "100vh",
             bgcolor: "background.paper",
+            marginBottom: "50px",
           }}
         >
           <Typography variant="h4" component="div" gutterBottom>
@@ -125,8 +129,8 @@ const Home = () => {
           </Typography>
           <Box
             sx={{
-              width: "80%", // Adjust the width of the carousel container
-              margin: "0 auto", // Center the carousel container
+              width: "80%",
+              margin: "0 auto",
               typography: "body1",
             }}
             component="div"
@@ -148,7 +152,7 @@ const Home = () => {
                       key={postIndex}
                       sx={{
                         maxWidth: "100%",
-                        width: "45%", // Adjust the card width for two cards per slide
+                        width: "35%", // Adjust the card width for two cards per slide
                         margin: "10px",
                         marginBottom: "40px",
                         display: "inline-block", // Display cards inline
@@ -178,6 +182,10 @@ const Home = () => {
           </Box>
         </Box>
       </div>
+      <div className="quickLinks">
+        <QuickLinks />
+      </div>
+      <PrayerTimesWidget />
     </div>
   );
 };

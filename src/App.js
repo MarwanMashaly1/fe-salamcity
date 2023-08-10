@@ -6,6 +6,7 @@ import Events from './pages/Events';
 import Contact from './pages/Contact';
 import './App.css';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
+
     </div>
   );
 }
