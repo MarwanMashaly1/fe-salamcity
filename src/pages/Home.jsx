@@ -6,6 +6,7 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
+  Button,
 } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -42,13 +43,13 @@ const featuredPosts = [
 ];
 
 const hero_content = {
-    title: "Welcome to The Muslim Navigator",
-    subtitle:
-      "Looking for events but don't know where to go? then you are in the right place to find all your Islamic needs",
-    event_btn: "Explore Events",
-    prayer_btn: "Find Prayer Times",
-    pattern: "https://source.unsplash.com/random",
-  };
+  title: "Welcome to The Muslim Navigator",
+  subtitle:
+    "Looking for events but don't know where to go? then you are in the right place to find all your Islamic needs",
+  event_btn: "Explore Events",
+  prayer_btn: "Find Prayer Times",
+  pattern: "https://source.unsplash.com/random",
+};
 
 const Home = () => {
   const pairsOfPosts = [];
@@ -58,7 +59,7 @@ const Home = () => {
 
   return (
     <div className="home">
-            <div
+      <div
         className="Hero"
         style={{
           position: "relative",
