@@ -1,0 +1,51 @@
+/* .events-filters {
+  position: relative;
+  display: flex;
+  left: 0;
+  width: 100%;
+  padding-top: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.org-filter {
+  width: 20%;
+  margin: 20px;
+}
+
+.org-select {
+  width: 100%;
+  border-radius: 25px;
+}
+ */
+
+/* .events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+
+/* Events Container */
+.events-container {
+  margin: 20px;
+}
+
+/* Filter Section */
+
+.org-filter {
+  margin-right: 10px;
+}
+
+.org-select {
+  width: 200px;
+}
+
+/* Events Grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center; /* Center horizontally */
+  align-content: center;
+}
+
+/* Event Card */
