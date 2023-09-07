@@ -1,0 +1,44 @@
+EVENTS PAGE
+
+1. Add pagination
+2. The cards has 2 buttons one to open the modal and the other redirects to website
+3. create modal (more information, bigger image, link to website)
+4. when clicking the card it opens the modal
+
+Prayer Times Page 
+
+1. Create the Page
+2. See how to lay it out and implement
+
+Contact Us Page
+
+1. Check implementation from past website 
+2. Connect to actuall emailing service
+3. redesign page to fit website theme
+
+Home Page
+
+1. implement logic for getting most recent posts
+2. to do that go to backend nad add date to the list of things recieved
+3. add featured posts properly 
+
+General website
+
+1. CHOOSE COLOR THEME 
+2. IMPLEMENT COLOR THEME EVERYWHERE!!!!
+3. Footer doesn't stick to the bottom. It will move up if page is empty
+4. Restyle Navigation bar
+5. Create logo for website
+6. Implement pages in the home page section (FAQ, ABout Us, Mosques)
+7. Add survival guide that are made by different MSAs
+8. Get Feedback 
+9. if Feedback is good implement different institutions
+10. Implement any feedback gotten
+
+
+Home Page
+
+1. implement logic for getting most recent posts
+2. add featured posts properly 
+
+Things are not in order please be careful!
