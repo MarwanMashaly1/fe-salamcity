@@ -7,8 +7,9 @@ EVENTS PAGE
 
 Prayer Times Page 
 
-1. Create the Page
-2. See how to lay it out and implement
+1. Create the Page - Done 
+2. See how to lay it out and implement - Done
+3. Implement Hero Section properly
 
 Contact Us Page
 
@@ -29,16 +30,12 @@ General website
 3. Footer doesn't stick to the bottom. It will move up if page is empty
 4. Restyle Navigation bar
 5. Create logo for website
-6. Implement pages in the home page section (FAQ, ABout Us, Mosques)
+6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides)
 7. Add survival guide that are made by different MSAs
 8. Get Feedback 
 9. if Feedback is good implement different institutions
 10. Implement any feedback gotten
 
 
-Home Page
-
-1. implement logic for getting most recent posts
-2. add featured posts properly 
 
 Things are not in order please be careful!

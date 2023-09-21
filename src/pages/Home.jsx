@@ -65,7 +65,10 @@ const Home = () => {
       <div
         className="Hero"
         style={{
-          position: "relative",
+          top: "0",
+          left: "0",
+          position: "absolute",
+          width: "100%",
           textAlign: "center",
           color: "white",
           backgroundSize: "cover",
@@ -73,6 +76,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           padding: "100px 0",
           backgroundImage: `url("${hero_content["pattern"]}")`,
+          zIndex: "-1",
         }}
       >
         <Box
@@ -84,7 +88,6 @@ const Home = () => {
             textAlign: "center",
             margin: "0 auto",
             position: "relative",
-            top: "30%",
           }}
         >
           <Typography variant="h2" component="h2" gutterBottom>
@@ -112,16 +115,18 @@ const Home = () => {
           </Button>
         </Box>
       </div>
+
       <div className="featured">
         <Box
           sx={{
-            marginTop: "50px",
+            marginTop: "475px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
             bgcolor: "background.paper",
             marginBottom: "50px",
+            position: "relative",
           }}
         >
           <Typography variant="h4" component="div" gutterBottom>

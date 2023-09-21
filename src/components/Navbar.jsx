@@ -17,7 +17,10 @@ const Navbar = () => {
   const [activePage, setActivePage] = useState("");
   return (
     <div className="navbar">
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ background: "transparent", boxShadow: "none", zIndex: 1 }}
+      >
         <Toolbar disableGutters>
           <Box
             sx={{
