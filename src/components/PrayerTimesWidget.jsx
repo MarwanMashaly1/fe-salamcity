@@ -17,7 +17,7 @@ const PrayerTimesWidget = () => {
 
         // Determine current prayer
         const now = moment();
-        for (let i = 0; i < prayers.length - 1; i++) {
+        for (let i = 1; i < prayers.length - 1; i++) {
           if (
             now.isBetween(
               moment(prayers[i][1], "hh:mm A"),

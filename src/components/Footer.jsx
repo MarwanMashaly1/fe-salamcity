@@ -59,11 +59,11 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2" gutterBottom>
-              Email: info@example.com
+              Email: muslimnav@gmail.com
             </Typography>
-            <Typography variant="body2" gutterBottom>
-              Phone: (123) 456-7890
-            </Typography>
+            {/* <Typography variant="body2" gutterBottom>
+              Phone: (343) 456-7890
+            </Typography> */}
           </Grid>
         </Grid>
       </Container>
@@ -76,11 +76,13 @@ const Footer = () => {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{ marginLeft: "5px" }}>
           &copy; {new Date().getFullYear()} The Muslim Navigator. All rights
           reserved.
         </Typography>
-        <Typography variant="body2">Designed by Your Name</Typography>
+        <Typography variant="body2" sx={{ marginRight: "5px" }}>
+          Designed by Marwan
+        </Typography>
       </Box>
     </Box>
   );
