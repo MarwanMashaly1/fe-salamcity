@@ -16,18 +16,20 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route path="/prayerTimes" element={<PrayerTimes />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Mosques" element={<Mosques />} />
-          <Route path="/donate" element={<Donate />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="main-content">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/*" element={<Home />} />
+            <Route path="/prayerTimes" element={<PrayerTimes />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Mosques" element={<Mosques />} />
+            <Route path="/donate" element={<Donate />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
       <Footer />
     </div>
   );

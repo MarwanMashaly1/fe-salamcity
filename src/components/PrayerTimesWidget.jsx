@@ -35,13 +35,13 @@ const PrayerTimesWidget = () => {
   }, []);
 
   return (
-    <Card elevation={3} sx={{ backgroundColor: "#f5f5f5" }}>
+    <Card elevation={3} sx={{ backgroundColor: "#f9e4bc" }}>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
+        {/* <Typography variant="h4" gutterBottom>
           Prayer Times
-        </Typography>
+        </Typography> */}
         <Box>
-          <Card sx={{ backgroundColor: "#ffffff", boxShadow: "none" }}>
+          <Card sx={{ backgroundColor: "#f9e4bc", boxShadow: "none" }}>
             <CardContent>
               <Grid container spacing={2}>
                 {prayerTimes.map((prayer) => (

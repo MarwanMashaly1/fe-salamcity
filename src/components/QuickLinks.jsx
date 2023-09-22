@@ -64,6 +64,14 @@ const QuickLinks = () => {
               sx={{
                 backgroundColor: link.color,
                 color: "#fff",
+                height: "100%",
+                width: "90%",
+                margin: "auto",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+                },
               }}
             >
               <CardContent>

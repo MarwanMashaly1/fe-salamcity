@@ -27,10 +27,10 @@ General website
 
 1. CHOOSE COLOR THEME 
 2. IMPLEMENT COLOR THEME EVERYWHERE!!!!
-3. Footer doesn't stick to the bottom. It will move up if page is empty
+3. Footer doesn't stick to the bottom. It will move up if page is empty - Done
 4. Restyle Navigation bar
 5. Create logo for website
-6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides)
+6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides) 
 7. Add survival guide that are made by different MSAs
 8. Get Feedback 
 9. if Feedback is good implement different institutions
@@ -39,3 +39,10 @@ General website
 
 
 Things are not in order please be careful!
+
+
+Colors Chosen For now:
+
+#f9e4bc - Dairy Cream
+#4a6741 - Dark Forest Green
+#a67c00 - Dark Gold

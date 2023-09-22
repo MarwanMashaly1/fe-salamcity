@@ -1,5 +1,17 @@
+body {
+  background-color: #f3e4ba;
+  font-family: "Roboto", sans-serif;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
 }
 
 .App-logo {

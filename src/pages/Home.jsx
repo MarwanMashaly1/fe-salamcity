@@ -7,7 +7,6 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
-  Grid,
 } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -119,19 +118,18 @@ const Home = () => {
       <div className="featured">
         <Box
           sx={{
-            marginTop: "475px",
+            marginTop: "500px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
-            bgcolor: "background.paper",
             marginBottom: "50px",
             position: "relative",
           }}
         >
-          <Typography variant="h4" component="div" gutterBottom>
+          {/* <Typography variant="h4" component="div" gutterBottom>
             Featured
-          </Typography>
+          </Typography> */}
           <Box
             sx={{
               width: "80%",
