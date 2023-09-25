@@ -19,7 +19,13 @@ const Navbar = () => {
     <div className="navbar">
       <AppBar
         position="static"
-        sx={{ background: "transparent", boxShadow: "none", zIndex: 1 }}
+        sx={{
+          background: "transparent",
+          boxShadow: "none",
+          zIndex: 1,
+          color: "#f9e4bc",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+        }}
       >
         <Toolbar disableGutters>
           <Box
@@ -35,7 +41,7 @@ const Navbar = () => {
               component="div"
               sx={{ marginLeft: "20px" }}
             >
-              The Muslim Navigator
+              Muslim Nav
             </Typography>
           </Box>
           <Box

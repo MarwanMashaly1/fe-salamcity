@@ -1,48 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  CardActionArea,
-} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import QuickLinks from "../components/QuickLinks";
 import PrayerTimesWidget from "../components/PrayerTimesWidget";
+import Featured from "../components/Home/Featured";
 
-const featuredPosts = [
-  {
-    title: "Featured post 1",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageLabel: "Image Text 1",
-  },
-  {
-    title: "Featured post 2",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageLabel: "Image Text 2",
-  },
-  {
-    title: "Featured post 3",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageLabel: "Image Text 2",
-  },
-  {
-    title: "Featured post 4 ",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageLabel: "Image Text 2",
-  },
-];
+import hero_bg from "../images/BeFunky-collage.jpg";
 
 const hero_content = {
   title: "Welcome to The Muslim Navigator",
@@ -50,15 +13,10 @@ const hero_content = {
     "Looking for events but don't know where to go? then you are in the right place to find all your Islamic needs",
   event_btn: "Explore Events",
   prayer_btn: "Find Prayer Times",
-  pattern: "https://source.unsplash.com/random",
+  pattern: hero_bg,
 };
 
 const Home = () => {
-  const pairsOfPosts = [];
-  for (let i = 0; i < featuredPosts.length; i += 2) {
-    pairsOfPosts.push(featuredPosts.slice(i, i + 2));
-  }
-
   return (
     <div className="home">
       <div
@@ -73,7 +31,7 @@ const Home = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          padding: "100px 0",
+          padding: "140px 0",
           backgroundImage: `url("${hero_content["pattern"]}")`,
           zIndex: "-1",
         }}
@@ -81,7 +39,7 @@ const Home = () => {
         <Box
           textAlign="center"
           sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
             padding: "20px",
             maxWidth: "600px",
             textAlign: "center",
@@ -114,77 +72,10 @@ const Home = () => {
           </Button>
         </Box>
       </div>
-
-      <div className="featured">
-        <Box
-          sx={{
-            marginTop: "500px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%",
-            marginBottom: "50px",
-            position: "relative",
-          }}
-        >
-          {/* <Typography variant="h4" component="div" gutterBottom>
-            Featured
-          </Typography> */}
-          <Box
-            sx={{
-              width: "80%",
-              margin: "0 auto",
-              typography: "body1",
-            }}
-            component="div"
-          >
-            <Carousel
-              showThumbs={false}
-              showStatus={false}
-              showArrows={true}
-              infiniteLoop={true}
-              emulateTouch={true}
-              swipeable={true}
-              centerSlidePercentage={50}
-              autoPlay={true}
-            >
-              {pairsOfPosts.map((pair, index) => (
-                <div key={index} className="pair-of-cards">
-                  {pair.map((post, postIndex) => (
-                    <Card
-                      key={postIndex}
-                      sx={{
-                        maxWidth: "100%",
-                        width: "35%", // Adjust the card width for two cards per slide
-                        margin: "10px",
-                        marginBottom: "40px",
-                        display: "inline-block", // Display cards inline
-                      }}
-                    >
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          height="140"
-                          image={post.image}
-                          alt={post.imageLabel}
-                        />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            {post.title}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {post.description}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  ))}
-                </div>
-              ))}
-            </Carousel>
-          </Box>
-        </Box>
+      <div className="featured-home">
+        <Featured />
       </div>
+
       <div className="quickLinks">
         <QuickLinks />
       </div>
