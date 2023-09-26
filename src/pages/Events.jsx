@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Grid from "@mui/material/Grid";
 import EventCard from "../components/EventCard";
+import HeroPage from "../components/HeroPage";
 
 const Events = () => {
   const organizations = ["All Organizations", "SNMC", "Masjid ar-Rahma"];
@@ -107,7 +108,10 @@ const Events = () => {
   return (
     <div className="events-container">
       <div className="events-hero">
-        <h1 className="events-hero-title">Events</h1>
+        <HeroPage
+          title="Events"
+          desc="Discover various events across the city"
+        />
       </div>
 
       <div className="events-filter">

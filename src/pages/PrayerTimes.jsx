@@ -68,7 +68,10 @@ const PrayerTimes = () => {
     <div>
       {/* Header is not Done we need to make it look nicer and shaped */}
       <div className="prayer-times-hero">
-        <HeroPage />
+        <HeroPage
+          title="Prayer Times"
+          desc="Find out the different prayer times of each Masjid in our city!"
+        />
       </div>
       <Grid
         container

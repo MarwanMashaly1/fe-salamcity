@@ -9,7 +9,7 @@ Prayer Times Page
 
 1. Create the Page - Done 
 2. See how to lay it out and implement - Done
-3. Implement Hero Section properly
+3. Implement Hero Section properly - Done
 
 Contact Us Page
 

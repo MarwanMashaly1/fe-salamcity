@@ -2,13 +2,13 @@ import React from "react";
 import { Container, Typography } from "@mui/material";
 import "../styles/HeroPage.css";
 
-const HeroPage = () => {
+const HeroPage = ({ title, desc }) => {
   return (
     <div>
       <div className="page-title">
         <Container maxWidth="md">
           <Typography variant="h4" align="center" gutterBottom>
-            Prayer Times
+            {title}
           </Typography>
           <Typography
             variant="h6"
@@ -16,7 +16,7 @@ const HeroPage = () => {
             paragraph
             className="secondry-hero-text"
           >
-            Find the prayer times for different mosques in your city.
+            {desc}
           </Typography>
         </Container>
       </div>
