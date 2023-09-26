@@ -1,13 +1,13 @@
 import React from "react";
 
-const About = () => {
+const Guides = () => {
   return (
     <div>
-      <h1>About</h1>
+      <h1>Local Guides</h1>
 
       <p>Work in Progress...</p>
     </div>
   );
 };
 
-export default About;
+export default Guides;

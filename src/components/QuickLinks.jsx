@@ -34,10 +34,10 @@ const QuickLinks = () => {
     },
     {
       icon: <Info />,
-      title: "About Us",
-      description: "Learn about our website's mission",
+      title: "Local Guides",
+      description: "Learn about the Ottawa Muslim community",
       color: "#1976d2", // Bottom section color
-      link: "/about", // Link to the about page
+      link: "/guides", // Link to the about page
     },
     {
       icon: <QuestionAnswer />,

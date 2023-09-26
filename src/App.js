@@ -8,7 +8,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Faq from "./pages/Faq";
-import About from "./pages/About";
+import Guides from "./pages/Guides";
 import Mosques from "./pages/Mosques";
 import Donate from "./pages/Donate";
 
@@ -24,7 +24,7 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<Faq />} />
-            <Route path="/About" element={<About />} />
+            <Route path="/guides" element={<Guides />} />
             <Route path="/Mosques" element={<Mosques />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>

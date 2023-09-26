@@ -8,22 +8,21 @@ import {
   IconButton,
   Box,
 } from "@mui/material";
-import "../styles/Navbar.css";
 
-const pages = ["Home", "Prayer Times", "Events", "Contact"];
-const pages_links = ["/", "/prayertimes", "/events", "/contact"];
+const pages = ["Home", "Prayer Times", "Events", "Guides", "Contact"];
+const pages_links = ["/", "/prayertimes", "/events", "/guides", "/contact"];
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState("");
   return (
     <div className="navbar">
       <AppBar
-        position="static"
+        position="fixed"
         sx={{
           background: "transparent",
           boxShadow: "none",
-          zIndex: 1,
-          color: "#f9e4bc",
+          zIndex: 1000,
+          color: "#fff",
           backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
       >
