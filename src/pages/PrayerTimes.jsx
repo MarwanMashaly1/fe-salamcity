@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MosqueCard from "../components/MosqueCard";
 import axios from "axios";
 import { Container, Typography, Grid, Skeleton } from "@mui/material";
+import HeroPage from "../components/HeroPage";
 import "../styles/PrayerTimes.css";
 
 const PrayerTimes = () => {
@@ -66,27 +67,14 @@ const PrayerTimes = () => {
   return (
     <div>
       {/* Header is not Done we need to make it look nicer and shaped */}
-      <div className="prayer-times-title">
-        <Container maxWidth="md">
-          <Typography
-            variant="h4"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            Prayer Times
-          </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            Find the prayer times for different mosques in your city.
-          </Typography>
-        </Container>
+      <div className="prayer-times-hero">
+        <HeroPage />
       </div>
-      <Grid container spacing={6} sx={{ justifyContent: "center" }}>
+      <Grid
+        container
+        spacing={6}
+        sx={{ justifyContent: "center", marginBottom: "40px" }}
+      >
         {mosques.map((mosque, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <MosqueCard mosque={mosque} />

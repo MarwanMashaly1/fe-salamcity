@@ -13,20 +13,21 @@ Prayer Times Page
 
 Contact Us Page
 
-1. Check implementation from past website 
-2. Connect to actuall emailing service
-3. redesign page to fit website theme
+1. Check implementation from past website - Done 
+2. Connect to actuall emailing service 
+3. redesign page to fit website theme - Done
 
 Home Page
 
-1. implement logic for getting most recent posts
-2. to do that go to backend nad add date to the list of things recieved
-3. add featured posts properly 
+1. implement logic for getting most recent posts - Delayed
+2. to do that go to backend and add date to the list of things recieved - Delayed
+3. Get first 2 from each list - Done
+3. add featured posts properly - Done
 
 General website
 
-1. CHOOSE COLOR THEME 
-2. IMPLEMENT COLOR THEME EVERYWHERE!!!!
+1. CHOOSE COLOR THEME - Done
+2. IMPLEMENT COLOR THEME EVERYWHERE!!!! - Done
 3. Footer doesn't stick to the bottom. It will move up if page is empty - Done
 4. Restyle Navigation bar
 5. Create logo for website

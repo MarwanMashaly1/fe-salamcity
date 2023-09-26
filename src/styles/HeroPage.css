@@ -1,14 +1,15 @@
-.prayer-times-title {
+.page-title {
   position: relative;
+  color: #ffff;
   background: linear-gradient(to left, #4a6741, #4a6d41);
   padding: 2rem 0;
-}
-
-.prayer-times-title {
   padding-top: 80px;
   width: 100;
-  height: 20%;
   border-left: 400px solid transparent; /* Adjust as needed */
   border-right: 400px solid transparent; /* Adjust as needed */
   border-bottom: 75px solid #f9e4bc; /* Adjust as needed */
+}
+
+.secondry-hero-text {
+  color: #e7e7e7;
 }
