@@ -10,10 +10,9 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
-import RoomIcon from "@mui/icons-material/Room";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import HeroPage from "../components/HeroPage";
 // import "../styles/Contact.css";
 
 const Contact = () => {
@@ -72,6 +71,12 @@ const Contact = () => {
 
   return (
     <div>
+      <div className="prayer-times-hero">
+        <HeroPage
+          title="Local Guide"
+          desc="Find the nearest mosque and halal restaurant in your area."
+        />
+      </div>
       <div className="hero-contact">
         <h1>Contact</h1>
       </div>
