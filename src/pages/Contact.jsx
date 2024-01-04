@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import {
   Box,
-  Grid,
-  Card,
-  CardContent,
   Typography,
   TextField,
   Button,
   Snackbar,
   Alert,
 } from "@mui/material";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-import HeroPage from "../components/HeroPage";
+import HeroPage from "../components/common/HeroPage";
+import emailjs from "@emailjs/browser";
+
 // import "../styles/Contact.css";
 
 const Contact = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [emailStatus, setEmailStatus] = useState("");
   const [formValues, setFormValues] = useState({
     fullName: "",
     email: "",
@@ -32,27 +30,52 @@ const Contact = () => {
     setOpenSnackbar(false);
   };
 
-  const handleSubmit = () => {
-    const { fullName, email, company, message } = formValues;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    if (fullName && email && company && message) {
+    const { fullName, email, message } = formValues;
+
+    if (fullName && email && message) {
       // Reset form errors
       setFormErrors({
         fullName: false,
         email: false,
-        company: false,
         message: false,
       });
 
+      // Send email
+      emailjs
+        .send(
+          "mailtrap_send_service",
+          "template_b0zc0vm",
+          {
+            message: message,
+            from_name: fullName,
+            reply_to: email,
+          },
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          (response) => {
+            console.log("SUCCESS!", response.status, response.text);
+            setEmailStatus("Email sent successfully!");
+            setOpenSnackbar(true);
+            setIsButtonClicked(true);
+          },
+          (err) => {
+            console.log("FAILED...", err);
+            setEmailStatus("Failed to send email.");
+            setOpenSnackbar(true);
+            setIsButtonClicked(false);
+          }
+        );
+
       // Logic for form submission
-      setOpenSnackbar(true);
-      setIsButtonClicked(true);
     } else {
       // Display form error messages
       setFormErrors({
         fullName: fullName ? false : "Please enter your full name",
         email: email ? false : "Please enter a valid email",
-        company: company ? false : "Please enter your company",
         message: message ? false : "Please enter your message",
       });
 
@@ -73,90 +96,11 @@ const Contact = () => {
     <div>
       <div className="prayer-times-hero">
         <HeroPage
-          title="Local Guide"
+          title="Contact Us"
           desc="Find the nearest mosque and halal restaurant in your area."
         />
       </div>
-      <div className="hero-contact">
-        <h1>Contact</h1>
-      </div>
       <div className="contact">
-        <Box
-          sx={{
-            marginTop: "50px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%",
-            marginBottom: "50px",
-            position: "relative",
-          }}
-        >
-          <Box
-            sx={{
-              width: "80%",
-              margin: "0 auto",
-              typography: "body1",
-            }}
-            component="div"
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Card
-                  sx={{
-                    backgroundColor: "#f9e4bc",
-                    boxShadow: "none",
-                    borderRadius: "10px",
-                  }}
-                  // elevation={3}
-                >
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                      <PhoneIcon
-                        sx={{
-                          marginRight: "10px",
-                          marginBottom: "5px",
-                          fontSize: "1.5rem",
-                        }}
-                      />
-                      Phone
-                    </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      (343) 456-7890
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Card
-                  sx={{
-                    backgroundColor: "#f9e4bc",
-                    boxShadow: "none",
-                    borderRadius: "10px",
-                  }}
-                  // elevation={3}
-                >
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                      <EmailIcon
-                        sx={{
-                          marginRight: "10px",
-                          marginBottom: "5px",
-                          fontSize: "1.5rem",
-                        }}
-                      />
-                      Email
-                    </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      muslimnav@gmail.com
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-
         <Box
           sx={{
             marginTop: "50px",
@@ -239,6 +183,19 @@ const Contact = () => {
           </Box>
         </Box>
       </div>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={isButtonClicked ? "success" : "error"}
+          sx={{ width: "100%" }}
+        >
+          {isButtonClicked ? "Form submitted successfully!" : emailStatus}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

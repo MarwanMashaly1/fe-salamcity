@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+      name="SalamCity"
+      content="A place to find all the events happening in the city"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta
+      name="keywords"
+      content="SalamCity, Salam, City, Events, Event, Happening, Happenings, Happening in the city, Happenings in the city, Events in the city, Event in the city, Events happening in the city, Event happening in the city, muslim, ottawa, ottawa events, ottawa event, ottawa happening, ottawa happenings, ottawa happening, ottawa happenings, ottawa events happening, ottawa events happenings, ottawa event happening, ottawa event happenings, ottawa muslim, ottawa muslim events, ottawa muslim event, ottawa muslim happening, ottawa muslim happenings, ottawa muslim happening, ottawa muslim happenings, ottawa muslim events happening, ottawa muslim events happenings, ottawa muslim event happening, ottawa muslim event happenings, ottawa muslims, ottawa muslims events, ottawa muslims event, ottawa muslims happening, ottawa muslims happenings, ottawa muslims happening, ottawa muslims happenings, ottawa muslims events happening, ottawa muslims events happenings, ottawa muslims event happening, ottawa muslims event happenings"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
     <!--
-      manifest.json provides metadata used when your web app is installed on a
+      manifest.json provides metadata used when your web app is installed on a   
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -24,10 +28,19 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>SalamCity</title>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("_iJ6ZqS--6OxLMezB");
+      })();
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>A place to find all the events happening in the city</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.

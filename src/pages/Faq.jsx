@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
+import HeroPage from "../components/common/HeroPage";
 
 const faqs = [
   {
@@ -31,10 +32,11 @@ const FaqPage = () => {
 
   return (
     <div>
-      <div>
-        <Typography variant="h4" gutterBottom>
-          Frequently Asked Questions
-        </Typography>
+      <div className="prayer-times-hero">
+        <HeroPage
+          title="FAQs"
+          desc="Find answers to frequently asked questions"
+        />
       </div>
       <Box
         sx={{

@@ -11,10 +11,8 @@ export const MosqueProvider = ({ children }) => {
   useEffect(() => {
     // Fetch prayer times when the component mounts
     const fetchPrayerTimes = async () => {
-      const rahmaResponse = await axios.get(
-        "http://127.0.0.1:5000/masjidrahma/prayer"
-      );
-      const snmcResponse = await axios.get("http://127.0.0.1:5000/snmc/prayer");
+      const rahmaResponse = await axios.get("api/v1/masjidrahma/prayer");
+      const snmcResponse = await axios.get("api/v1/snmc/prayer");
       setMosques([rahmaResponse.data, snmcResponse.data]);
     };
 

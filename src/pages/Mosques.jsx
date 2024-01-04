@@ -1,5 +1,5 @@
 import React from "react";
-import HeroPage from "../components/HeroPage";
+import HeroPage from "../components/common/HeroPage";
 
 const Mosques = () => {
   return (
@@ -10,8 +10,6 @@ const Mosques = () => {
           desc="Learn more about the masajid in your area."
         />
       </div>
-      <h1>Mosques</h1>
-
       <p>Work in Progress...</p>
     </div>
   );

@@ -1,133 +1,6 @@
-/* .event-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.event-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: calc(33.33% - 20px);
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.event-card-img img {
-  width: 100%;
-  height: auto;
-}
-
-.event-card-info {
-  padding: 10px; 
-  flex-grow: 1;
-}
-
-.event-card-title {
-  margin: 0;
-  font-size: 1rem; 
-  font-weight: bold;
-}
-
-.event-card-desc {
-  margin: 0.5rem 0;
-  color: #333;
-  font-size: 0.8rem; 
-}
-
-.event-card-actions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px; 
-  background: #f4f4f4;
-}
-
-.event-card-actions button {
-  border: none;
-  background: #333;
-  color: #fff;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 0.8rem; 
-} */
-
-/* Adjust the hero section */
-
-/* Style the event cards container */
-/* .events-cards {
-  justify-content: space-between;
-}
-
-.event-card {
-  width: 40%;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  transition: transform 0.2s;
-}
-
-.event-card:hover {
-  transform: translateY(-5px);
-}
-
-.event-card-img img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px 10px 0 0;
-}
-
-.event-card-content {
-  padding: 10px;
-}
-
-.event-card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.event-card-desc {
-  font-size: 1rem;
-  color: #555;
-}
-
-.event-card-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-.event-card-actions button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 15px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.event-card-actions button:hover {
-  background-color: #0056b3;
-}
-
-.event-card-span-desc {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-  max-height: 2.4em;
-  line-height: 1.2em;
-  width: 100%;
-  height: 2.4em;
-} */
-
 .featured-card {
-  width: 40%; /* Adjust the width as needed */
+  width: 30%; /* Set a fixed width */
+  /* height: 350px; */
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
@@ -136,16 +9,22 @@
   display: inline-block;
 }
 
+@media (max-width: 600px) {
+  .featured-card {
+    width: 90%; /* Maximum width on screens wider than 600px */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .featured-card {
+    width: 40%; /* Maximum width on screens wider than 600px */
+  }
+}
+
 /* Event Card Image */
-/* .event-card-img img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  } */
 .featured-card-img img {
   width: 100%;
-  object-fit: fill;
-  height: 250px; /* Adjust the height to match your card height */
+  object-fit: cover;
 }
 
 /* Event Card Content */
@@ -154,17 +33,40 @@
 }
 
 /* Event Card Title */
+/* .featured-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+} */
+
 .featured-card-title {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+  line-height: 1.2em; /* Adjust line height as needed */
 }
 
 /* Event Card Description */
+/* .featured-card-desc {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 2rem;
+} */
+
 .featured-card-desc {
   margin: 0.5rem 0;
   color: #333;
   font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  max-width: 100%;
+  line-height: 1.2em;
+  width: 100%;
+  min-height: 2.4em; /* Minimum height equivalent to 2 lines of text */
 }
 
 /* Event Card Actions */
@@ -184,8 +86,11 @@
 }
 
 .featured-card-span-desc {
-  display: block;
-  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical;
+
+  /* word-wrap: break-word; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: initial;
@@ -194,6 +99,7 @@
   line-height: 1.2em;
   width: 100%;
   height: 2.4em;
+  min-height: 2.4em; /* Add this line */
 }
 
 .no-image-box {

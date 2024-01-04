@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import MosqueCard from "../components/MosqueCard";
 import axios from "axios";
-import { Container, Typography, Grid, Skeleton } from "@mui/material";
-import HeroPage from "../components/HeroPage";
+import { Grid, Skeleton } from "@mui/material";
+import HeroPage from "../components/common/HeroPage";
 import "../styles/PrayerTimes.css";
 
 const PrayerTimes = () => {
   const [rahmaPrayerTimes, setRahmaPrayerTimes] = useState([]);
   const [snmcPrayerTimes, setSnmcPrayerTimes] = useState([]);
+  const [kmaPrayerTimes, setKmaPrayerTimes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/masjidrahma/prayer")
+      .get("api/v1/masjidrahma/prayer")
       .then((response) => {
         console.log(response);
         setRahmaPrayerTimes(response.data);
@@ -27,7 +28,7 @@ const PrayerTimes = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/snmc/prayer")
+      .get("api/v1/snmc/prayer")
       .then((response) => {
         console.log(response);
         setSnmcPrayerTimes(response.data);
@@ -40,7 +41,22 @@ const PrayerTimes = () => {
       });
   }, []);
 
-  const mosques = [rahmaPrayerTimes, snmcPrayerTimes];
+  useEffect(() => {
+    axios
+      .get("api/v1/kma/prayer")
+      .then((response) => {
+        console.log(response);
+        setKmaPrayerTimes(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching prayer times:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  const mosques = [rahmaPrayerTimes, snmcPrayerTimes, kmaPrayerTimes];
 
   if (loading || mosques.every((mosque) => mosque.length === 0)) {
     return (

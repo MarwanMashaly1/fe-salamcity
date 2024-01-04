@@ -1,5 +1,5 @@
 import React from "react";
-import HeroPage from "../components/HeroPage";
+import HeroPage from "../components/common/HeroPage";
 
 const Guides = () => {
   return (
@@ -10,8 +10,6 @@ const Guides = () => {
           desc="Find the nearest mosque and halal restaurant in your area."
         />
       </div>
-      <h1>Local Guides</h1>
-
       <p>Work in Progress...</p>
     </div>
   );

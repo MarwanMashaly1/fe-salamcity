@@ -10,9 +10,10 @@ const PrayerTimesWidget = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/masjidrahma/prayer")
+      .get("api/v1/masjidrahma/prayer")
       .then((response) => {
         const prayers = response.data.slice(1); // Exclude the headers
+        prayers.pop(); // Remove the last row (Jumuah)
         setPrayerTimes(prayers);
 
         // Determine current prayer
@@ -35,15 +36,29 @@ const PrayerTimesWidget = () => {
   }, []);
 
   return (
-    <Card elevation={3} sx={{ backgroundColor: "#f9e4bc" }}>
+    <Card
+      elevation={3}
+      sx={{
+        backgroundColor: "#f9e4bc",
+        boxShadow: "none",
+      }}
+    >
       <CardContent>
         {/* <Typography variant="h4" gutterBottom>
           Prayer Times
         </Typography> */}
         <Box>
-          <Card sx={{ backgroundColor: "#f9e4bc", boxShadow: "none" }}>
+          <Card sx={{ boxShadow: "none", backgroundColor: "#f9e4bc" }}>
             <CardContent>
-              <Grid container spacing={2}>
+              <Grid
+                container
+                spacing={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 {prayerTimes.map((prayer) => (
                   <Grid item xs={4} md={2} key={prayer[0]}>
                     <Box
@@ -53,6 +68,7 @@ const PrayerTimesWidget = () => {
                         alignItems: "center",
                         padding: "10px",
                         borderRadius: "10px",
+                        width: "100%",
                         backgroundColor:
                           currentPrayer === prayer[0] ? "#f0f8ff" : "#ffffff",
                         boxShadow:
