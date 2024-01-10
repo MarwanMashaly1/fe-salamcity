@@ -95,7 +95,18 @@ const PrayerTimes = () => {
         sx={{ justifyContent: "center", marginBottom: "40px" }}
       >
         {mosques.map((mosque, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <MosqueCard mosque={mosque} />
           </Grid>
         ))}

@@ -27,11 +27,22 @@ function validURL(str) {
 }
 
 const Events = () => {
-  const organizations = ["All Organizations", "SNMC", "Masjid ar-Rahma", "KMA"];
+  const organizations = [
+    "All Organizations",
+    "SNMC",
+    "Masjid ar-Rahma",
+    "KMA",
+    "OMA",
+    "UOMSA",
+    "CUMSA",
+  ];
   const [selectedOrganization, setSelectedOrganization] = useState("");
   const [snmcEvents, setSNMCEvents] = useState([]);
   const [rahmaEvents, setRahmaEvents] = useState([]);
   const [kmaEvents, setKMAEvents] = useState([]);
+  const [omaEvents, setOMAEvents] = useState([]);
+  const [uomsaEvents, setUOMSAEvents] = useState([]);
+  const [cumsaEvents, setCUMSAEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -65,6 +76,37 @@ const Events = () => {
       .catch((error) => {
         console.error("Error fetching KMA events:", error);
       });
+
+    // Fetch OMA events using Axios
+    axios
+      .get("api/v1/oma/events")
+      .then((response) => {
+        setOMAEvents(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching OMA events:", error);
+      });
+
+    // Fetch UOMSA events using Axios
+    axios
+      .get("api/v1/uomsa/events")
+      .then((response) => {
+        // go over each event in response
+        setUOMSAEvents(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching UOMSA events:", error);
+      });
+
+    // Fetch CUMSA events using Axios
+    axios
+      .get("api/v1/cumsa/events")
+      .then((response) => {
+        setCUMSAEvents(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching CUMSA events:", error);
+      });
   }, []);
 
   const openModal = (event) => {
@@ -85,7 +127,7 @@ const Events = () => {
         title: event.title, // Modify according to your SNMC event structure
         description: event[0], // Modify according to your SNMC event structure
         image: event[1], // Modify according to your SNMC event structure
-        link: event.link, // Modify according to your SNMC event structure
+        link: "snmc.ca", // Modify according to your SNMC event structure
         key: index,
       }));
     } else if (selectedOrganization === "Masjid ar-Rahma") {
@@ -109,7 +151,6 @@ const Events = () => {
             imageUrl = event[7][0];
           }
         }
-
         return {
           title: event[0] || "Untitled",
           date: event[1],
@@ -122,6 +163,30 @@ const Events = () => {
           key: index,
         };
       });
+    } else if (selectedOrganization === "OMA") {
+      eventsToRender = omaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2],
+        key: index,
+      }));
+    } else if (selectedOrganization === "UOMSA") {
+      eventsToRender = uomsaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2],
+        key: index,
+      }));
+    } else if (selectedOrganization === "CUMSA") {
+      eventsToRender = cumsaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2],
+        key: index,
+      }));
     } else {
       // When "All Organizations" is selected, combine both SNMC and Rahma events
       const snmcEventsMapped = snmcEvents.map((event, index) => ({
@@ -169,10 +234,40 @@ const Events = () => {
         };
       });
 
+      const omaEventsMapped = omaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2] || "",
+        key: `oma-${index}`,
+        org: "OMA",
+      }));
+
+      const uomsaEventsMapped = uomsaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2] || "",
+        key: `uomsa-${index}`,
+        org: "UOMSA",
+      }));
+
+      const cumsaEventsMapped = cumsaEvents.map((event, index) => ({
+        title: "",
+        description: event[0],
+        image: event[1],
+        link: event[2] || "",
+        key: `cumsa-${index}`,
+        org: "CUMSA",
+      }));
+
       eventsToRender = [
         ...snmcEventsMapped,
         ...rahmaEventsMapped,
         ...kmaEventsMapped,
+        ...omaEventsMapped,
+        ...uomsaEventsMapped,
+        ...cumsaEventsMapped,
       ];
     }
 
@@ -236,7 +331,7 @@ const Events = () => {
   );
 
   return (
-    <div className="events-container">
+    <div className="events-container" style={{ overflowX: "hidden" }}>
       <div className="events-hero">
         <HeroPage
           title="Events"

@@ -1,9 +1,5 @@
 import React from "react";
 import { Box, Container, Grid, Typography, Link } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-
 const Footer = () => {
   return (
     <Box
@@ -64,20 +60,6 @@ const Footer = () => {
 
             {/* Add more quick links as needed */}
           </Grid>
-          {/* <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" gutterBottom>
-              Social Media
-            </Typography>
-            <Link href="#" color="inherit" sx={{ marginRight: "10px" }}>
-              <FacebookIcon />
-            </Link>
-            <Link href="#" color="inherit" sx={{ marginRight: "10px" }}>
-              <TwitterIcon />
-            </Link>
-            <Link href="#" color="inherit">
-              <InstagramIcon />
-            </Link>
-          </Grid> */}
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6" gutterBottom>
               Contact Us
@@ -94,7 +76,8 @@ const Footer = () => {
           paddingTop: "20px",
           marginTop: "20px",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Typography variant="body2" sx={{ marginLeft: "5px" }}>

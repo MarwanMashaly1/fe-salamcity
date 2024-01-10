@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import QuickLinks from "../components/Home/QuickLinks";
@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import hero_bg from "../images/BeFunky-collage.jpg";
-import { LoadingContext } from "../utils/LoadingContext";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import "../styles/Home.css";
@@ -26,23 +25,34 @@ const hero_content = {
 const Home = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+    <div className="home">
       {isLoading ? (
         <div
           style={{
+            width: "100%",
+            height: "100vh",
+            backgroundColor: "#f3e4ba",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 10000,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "80vh",
           }}
         >
-          <CircularProgress />
+          <CircularProgress
+            size={100}
+            thickness={1.5}
+            style={{ color: "white" }}
+          />
+          <Featured setLoading={setIsLoading} />
         </div>
       ) : (
-        <div className="home">
+        <>
           <div
             className="Hero"
             style={{
@@ -144,7 +154,7 @@ const Home = () => {
             </Box>
           </div>
           <div className="featured-home">
-            <Featured />
+            <Featured setLoading={setIsLoading} />
           </div>
 
           <div className="quickLinks">
@@ -153,10 +163,9 @@ const Home = () => {
           <div>
             <PrayerTimesWidget />
           </div>
-        </div>
+        </>
       )}
-      {/* </div> */}
-    </LoadingContext.Provider>
+    </div>
   );
 };
 
