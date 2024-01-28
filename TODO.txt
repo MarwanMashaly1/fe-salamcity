@@ -1,9 +1,22 @@
+General website
+
+1. CHOOSE COLOR THEME - Done
+2. IMPLEMENT COLOR THEME EVERYWHERE!!!! - Done
+3. Footer doesn't stick to the bottom. It will move up if page is empty - Done
+4. Restyle Navigation bar
+5. Create logo for website
+6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides) 
+7. Add survival guide that are made by different MSAs
+8. Get Feedback - Done
+9. if Feedback is good implement different institutions
+10. Implement any feedback gotten - Mostly Done
+
 EVENTS PAGE
 
-1. Add pagination
-2. The cards has 2 buttons one to open the modal and the other redirects to website
-3. create modal (more information, bigger image, link to website)
-4. when clicking the card it opens the modal
+1. Add pagination - Done
+2. The cards has 2 buttons one to open the modal and the other redirects to website - Done
+3. create modal (more information, bigger image, link to website) - In progress
+4. when clicking the card it opens the modal - Done
 
 Prayer Times Page 
 
@@ -14,7 +27,7 @@ Prayer Times Page
 Contact Us Page
 
 1. Check implementation from past website - Done 
-2. Connect to actuall emailing service 
+2. Connect to actuall emailing service - Done
 3. redesign page to fit website theme - Done
 
 Home Page
@@ -24,18 +37,60 @@ Home Page
 3. Get first 2 from each list - Done
 3. add featured posts properly - Done
 
-General website
+Guides Page (reach 200 avg)
 
-1. CHOOSE COLOR THEME - Done
-2. IMPLEMENT COLOR THEME EVERYWHERE!!!! - Done
-3. Footer doesn't stick to the bottom. It will move up if page is empty - Done
-4. Restyle Navigation bar
-5. Create logo for website
-6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides) 
-7. Add survival guide that are made by different MSAs
-8. Get Feedback 
-9. if Feedback is good implement different institutions
-10. Implement any feedback gotten
+1. Create your own guide and it should contain the following 
+    -Local Mosques
+    -Local Halal resturants
+    -butcheries
+    -muslim cemeteries
+    -muslim boutique shops
+2. Reach out to stores 
+3. come up with marketing strategy
+4. build list of stores
+5. 
+
+
+
+------
+Feedback Gotten to implement:
+
+New Pages:
+1. Ongoing halaqas
+2. Online Courses being offered 
+3. Calendar of all events
+
+Home page - Suggestions Done
+
+    Size difference in cards in carousel - Look into in future
+    Not sure if you can slow down the carousel because the items switch very quickly - Done
+    Not the biggest fan of the card designs I would change up the look from the basic cards (this is extra saraha, they are definitely fine but could be changed in the future) - Look in to it later
+    Would look better visually if the adhan times where the same size as the  buttons above them, have the start and end at the same points. (Might not look good but id give it a try and see)
+    Footer could use some work (might be incomplete)
+    Im unsure how I feel about the transparent header I would get other opinions on it - Done (increased opacity)
+    I would maybe make the logo clickable but doesn’t really matter - Done
+
+Prayer times page - Suggestions Done
+
+    I would make the space between cards and the right and left side of screen even. - Done
+    I would also make the cards the same size even if first card will have some wasted space at the bottom since it only has one jumuah prayer I think it would still be cleaner - Done
+    Im not sure why but there’s different shades of green where the title is, not sure if that’s on purpose or not (happens on other pages aswell) - On purpose
+    Otherwise clean page I like overall look
+
+
+Events
+
+    The page is very long and there’s quite a bit of space in between the cards, maybe try making it rows of three instead - Done
+    When using the filter, the word organization goes in the line of box, not sure if its supposed to be like that or if you can change that. (In the contact page the word gets a spot where it doesn’t go over the line, not sure if you can fix it too look like that also or no)
+    Otherwise I like the page 
+
+
+Contact
+
+    Error does not give message (not sure if you’ve gotten to that yet or not) - Done
+    Something small, when I used auto fill for email it changed inside color of box, might not be something you can change and I don’t think its necessarily a bad thing, just something to point out.
+    Would add some error verification, allowed me to insert an email without an @ sign - Done
+    Overall good looking page
 
 
 
@@ -45,5 +100,49 @@ Things are not in order please be careful!
 Colors Chosen For now:
 
 #f9e4bc - Dairy Cream
+#f3e4ba
 #4a6741 - Dark Forest Green
 #a67c00 - Dark Gold
+
+-----
+
+List of All orgs:
+
+1. Snmc - done
+2. Al rahma - done
+3. OMA - 50%
+4. UOMSA - done
+5. CUMSA - done
+6. KMA - done 
+7. BIC - done
+8. Qurtuba
+9. Jami Omar - 50%
+10. Masjid Bilal
+11. Bukhari Center
+12. Islam Care Center
+13. Masjid Alsalam
+14. 
+
+
+-------
+Feature List - In order:
+1. Mosques page - Done with 1.0
+2. improve events modal (1.1.0)
+2. Public Google Calendar or # 5 also (improve seo) (1.2.0)
+3. Halaqas Page and (improve seo) (1.3.0)
+4. use cron jobs and databases (1.4.0)
+5. Online Courses and (improve seo) (1.5.0)
+6. Location based filtering (1.6.0)
+7. Machine Learning Categorization (1.7.0)
+8. Local Guides Page (2.0)
+
+--------
+
+Bugs List:
+
+1. Filtering doesn't work if page is more than one in events page - TBD
+2. Improve website lighthouse score - TBD
+3. Modal text description overflows over border - Done
+4. Masjids page card in phone email overflow hidden - Done
+5. Masjid ar Rahmah filter, image disappears - Done
+6. Prayer times widget in home padding is bad for phones - TBD

@@ -9,7 +9,8 @@ const HeroPage = ({ title, desc }) => {
         className="page-title"
         sx={{
           position: "relative",
-          background: "linearGradient( to left, #4a6741, #4a6d41 )",
+          // background: "linearGradient( to left, #4a6741, #4a6d41 )",
+          backgroundColor: "#4a6741",
           padding: "1rem 0",
           paddingTop: "80px",
           width: "100%",

@@ -14,8 +14,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../images/logo.png";
 
-const pages = ["Home", "Prayer Times", "Events", "Guides", "Contact"];
-const pages_links = ["/", "/prayertimes", "/events", "/guides", "/contact"];
+const pages = ["Home", "Prayer Times", "Events", "Contact"];
+const pages_links = ["/", "/prayertimes", "/events", "/contact"];
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState("");
@@ -34,7 +34,7 @@ const Navbar = () => {
           zIndex: 1000,
           color: "#fff",
           backgroundColor: "#4a6741",
-          opacity: 0.8,
+          opacity: 0.98,
         }}
       >
         <Toolbar disableGutters>
@@ -46,22 +46,17 @@ const Navbar = () => {
               justifyContent: "flex-start",
             }}
           >
-            {/* <Typography
-              variant="h6"
-              component="div"
-              sx={{ marginLeft: "20px" }}
-            >
-              SalamCity
-            </Typography> */}
-            <img
-              src={logo}
-              alt="logo"
-              style={{
-                height: "90x",
-                width: "150px",
-                marginLeft: "10px",
-              }}
-            />
+            <a href="/">
+              <img
+                src={logo}
+                alt="logo"
+                style={{
+                  height: "90x",
+                  width: "150px",
+                  marginLeft: "10px",
+                }}
+              />
+            </a>
           </Box>
           <Box
             sx={{
@@ -150,7 +145,7 @@ const Navbar = () => {
           display: { sm: "block", md: "none" },
           "& .MuiDrawer-paper": {
             width: "60%",
-            backgroundColor: "#1976D2",
+            backgroundColor: "#4a6741",
             color: "#fff",
           },
         }}

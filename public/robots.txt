@@ -1,3 +1,3 @@
 User-agent: *
-Disallow:
-sitemap: salamcity.ca/sitemap.xml
+Disallow: /api
+Sitemap: https://salamcity.ca/sitemap.xml

@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import axios from "axios";
-import LoadingSkeleton from "./LoadingSkeleton"; // Import the loading skeleton component
 import FeaturedCard from "./FeaturedCard";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
@@ -13,44 +12,6 @@ const Featured = ({ setLoading }) => {
   const [featuredEvents, setFeaturedEvents] = useState([]);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  console.log({ setLoading });
-
-  // const fetchData = useCallback(async () => {
-  //   try {
-  //     const snmcResponse = await axios.get("/api/v1/snmc/events");
-  //     const snmcEvents = snmcResponse.data.slice(0, 2);
-  //     const snmcEventsMapped = snmcEvents.map((event, index) => ({
-  //       title: event.title,
-  //       description: event[0],
-  //       image: event[1],
-  //       link: "snmc.ca",
-  //       org: "SNMC",
-  //       key: `snmc-${index}`,
-  //     }));
-
-  //     const rahmaResponse = await axios.get("/api/v1/masjidrahma/events");
-  //     const rahmaEvents = rahmaResponse.data.slice(0, 2);
-  //     const rahmaEventsMapped = rahmaEvents.map((event, index) => ({
-  //       title: event[0],
-  //       description: event[2][0],
-  //       image: event[2][1],
-  //       link: event[1],
-  //       org: "masjidRahma",
-  //       key: `rahma-${index}`,
-  //     }));
-
-  //     const combinedEvents = [...snmcEventsMapped, ...rahmaEventsMapped];
-  //     setFeaturedEvents(combinedEvents);
-  //   } catch (error) {
-  //     console.error("Error fetching events:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [setLoading]);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, [fetchData]);
 
   useEffect(() => {
     axios
@@ -106,13 +67,6 @@ const Featured = ({ setLoading }) => {
       <div className="featured">
         <Box
           sx={{
-            // marginTop: isMobile ? "100%" : "35%",
-            // display: "flex",
-            // flexDirection: "column",
-            // alignItems: "center",
-            // width: "100%",
-            // marginBottom: "2%",
-            // position: "relative",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -138,6 +92,7 @@ const Featured = ({ setLoading }) => {
               arrows={true}
               autoplay={true}
               draggable={true}
+              autoplaySpeed={7000}
             >
               {pairsOfEvents.map((pair, index) => (
                 <div key={index} className="pair-of-cards">
@@ -154,31 +109,6 @@ const Featured = ({ setLoading }) => {
                 </div>
               ))}
             </Slider>
-            {/* <Carousel
-              showThumbs={false}
-              showStatus={false}
-              showArrows={true}
-              infiniteLoop={true}
-              emulateTouch={true}
-              swipeable={true}
-              centerSlidePercentage={50}
-              autoPlay={true}
-              slidesToShow={isMobile ? 1 : 2}
-            >
-              {pairsOfEvents.map((pair, index) => (
-                <div key={index} className="pair-of-cards">
-                  {pair.map((post, postIndex) => (
-                    <FeaturedCard
-                      title={post.title}
-                      description={post.description}
-                      image={post.image}
-                      link={post.link}
-                      org={post.org}
-                    />
-                  ))}
-                </div>
-              ))}
-            </Carousel> */}
           </Box>
         </Box>
       </div>

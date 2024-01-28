@@ -1,70 +1,37 @@
 import React, { useEffect, useState } from "react";
 import MosqueCard from "../components/MosqueCard";
 import axios from "axios";
-import { Grid, Skeleton } from "@mui/material";
+import { Grid } from "@mui/material";
 import HeroPage from "../components/common/HeroPage";
 import "../styles/PrayerTimes.css";
+import Loader from "../utils/Loader";
 
 const PrayerTimes = () => {
-  const [rahmaPrayerTimes, setRahmaPrayerTimes] = useState([]);
-  const [snmcPrayerTimes, setSnmcPrayerTimes] = useState([]);
-  const [kmaPrayerTimes, setKmaPrayerTimes] = useState([]);
+  const [mosques, setMosques] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("api/v1/masjidrahma/prayer")
-      .then((response) => {
-        console.log(response);
-        setRahmaPrayerTimes(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching prayer times:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const rahmaResponse = await axios.get("api/v1/masjidrahma/prayer");
+        const snmcResponse = await axios.get("api/v1/snmc/prayer");
+        const kmaResponse = await axios.get("api/v1/kma/prayer");
 
-  useEffect(() => {
-    axios
-      .get("api/v1/snmc/prayer")
-      .then((response) => {
-        console.log(response);
-        setSnmcPrayerTimes(response.data);
-      })
-      .catch((error) => {
+        setMosques([rahmaResponse.data, snmcResponse.data, kmaResponse.data]);
+      } catch (error) {
         console.error("Error fetching prayer times:", error);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
 
-  useEffect(() => {
-    axios
-      .get("api/v1/kma/prayer")
-      .then((response) => {
-        console.log(response);
-        setKmaPrayerTimes(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching prayer times:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    fetchData();
   }, []);
-
-  const mosques = [rahmaPrayerTimes, snmcPrayerTimes, kmaPrayerTimes];
 
   if (loading || mosques.every((mosque) => mosque.length === 0)) {
     return (
       <div>
-        <Skeleton variant="text" />
-        <Skeleton variant="rect" width={400} height={300} />
-        <Skeleton variant="text" />
-        <Skeleton variant="rect" width={400} height={300} />
+        <Loader />
       </div>
     );
   }
@@ -72,17 +39,13 @@ const PrayerTimes = () => {
   if (!mosques.every((mosque) => mosque.length > 0)) {
     return (
       <div>
-        <Skeleton variant="text" />
-        <Skeleton variant="rect" width={400} height={200} />
-        <Skeleton variant="text" />
-        <Skeleton variant="rect" width={400} height={118} />
+        <Loader />
       </div>
     );
   }
 
   return (
     <div>
-      {/* Header is not Done we need to make it look nicer and shaped */}
       <div className="prayer-times-hero">
         <HeroPage
           title="Prayer Times"

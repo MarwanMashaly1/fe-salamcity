@@ -1,23 +1,21 @@
 .featured-card {
-  width: 30%; /* Set a fixed width */
-  /* height: 350px; */
+  width: 30%;
   margin: 20px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  margin-bottom: 40px;
   display: inline-block;
 }
 
 @media (max-width: 600px) {
   .featured-card {
-    width: 90%; /* Maximum width on screens wider than 600px */
+    width: 90%;
   }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
   .featured-card {
-    width: 40%; /* Maximum width on screens wider than 600px */
+    width: 40%;
   }
 }
 
@@ -32,33 +30,18 @@
   padding: 15px;
 }
 
-/* Event Card Title */
-/* .featured-card-title {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-} */
-
 .featured-card-title {
-  margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
-  line-height: 1.2em; /* Adjust line height as needed */
+  line-height: 1.2em;
 }
-
-/* Event Card Description */
-/* .featured-card-desc {
-  margin: 0.5rem 0;
-  color: #333;
-  font-size: 2rem;
-} */
 
 .featured-card-desc {
   margin: 0.5rem 0;
   color: #333;
   font-size: 0.9rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,16 +95,4 @@
   background-color: #f4f4f4; /* Add a background color */
   color: #333;
   font-size: 16px; /* Adjust the font size as needed */
-}
-
-.events-filter {
-  display: flex;
-  width: 100%;
-  margin-left: 20px;
-  margin-top: 10px;
-}
-
-.event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

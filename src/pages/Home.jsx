@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import QuickLinks from "../components/Home/QuickLinks";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import hero_bg from "../images/BeFunky-collage.jpg";
-import CircularProgress from "@mui/material/CircularProgress";
+import Loader from "../utils/Loader";
 
 import "../styles/Home.css";
 import "../styles/fonts.css";
@@ -30,25 +30,8 @@ const Home = () => {
   return (
     <div className="home">
       {isLoading ? (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            backgroundColor: "#f3e4ba",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            zIndex: 10000,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CircularProgress
-            size={100}
-            thickness={1.5}
-            style={{ color: "white" }}
-          />
+        <div>
+          <Loader />
           <Featured setLoading={setIsLoading} />
         </div>
       ) : (
@@ -90,8 +73,8 @@ const Home = () => {
               }}
             >
               <Typography
-                variant="h2"
-                component="h2"
+                variant="h1"
+                component="h1"
                 gutterBottom
                 sx={{
                   fontSize: isMobile ? "2rem" : "4rem",

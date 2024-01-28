@@ -26,6 +26,13 @@ const Contact = () => {
     email: false,
     message: false,
   });
+
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
   };
@@ -35,7 +42,7 @@ const Contact = () => {
 
     const { fullName, email, message } = formValues;
 
-    if (fullName && email && message) {
+    if (fullName && validateEmail(email) && message) {
       // Reset form errors
       setFormErrors({
         fullName: false,
@@ -57,7 +64,6 @@ const Contact = () => {
         )
         .then(
           (response) => {
-            console.log("SUCCESS!", response.status, response.text);
             setEmailStatus("Email sent successfully!");
             setOpenSnackbar(true);
             setIsButtonClicked(true);
@@ -75,7 +81,11 @@ const Contact = () => {
       // Display form error messages
       setFormErrors({
         fullName: fullName ? false : "Please enter your full name",
-        email: email ? false : "Please enter a valid email",
+        email: email
+          ? validateEmail(email)
+            ? false
+            : "Please enter a valid email"
+          : "Please enter your email",
         message: message ? false : "Please enter your message",
       });
 
@@ -86,10 +96,22 @@ const Contact = () => {
 
   const handleFormChange = (event) => {
     const { id, value } = event.target;
+
     setFormValues((prevValues) => ({
       ...prevValues,
       [id]: value,
     }));
+
+    // Check email format if the changed field is the email field
+    if (id === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValidEmail = emailRegex.test(value);
+
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        email: isValidEmail ? false : "Please enter a valid email",
+      }));
+    }
   };
 
   return (
@@ -174,7 +196,7 @@ const Contact = () => {
                 size="large"
                 onClick={handleSubmit}
                 style={{
-                  backgroundColor: "#a67c00",
+                  backgroundColor: "#4a6741",
                 }}
               >
                 Submit
@@ -193,7 +215,9 @@ const Contact = () => {
           severity={isButtonClicked ? "success" : "error"}
           sx={{ width: "100%" }}
         >
-          {isButtonClicked ? "Form submitted successfully!" : emailStatus}
+          {isButtonClicked
+            ? "Message was sent successfully!"
+            : emailStatus || "Failed to send Message."}
         </Alert>
       </Snackbar>
     </div>

@@ -23,3 +23,22 @@
 }
 
 /* Event Card */
+
+/* Add responsive CSS here */
+.events-container {
+  padding: 10px;
+}
+
+.org-filter,
+.org-select {
+  min-width: 150px; /* Adjust for smaller screens */
+}
+
+/* Additional media queries for responsiveness */
+@media (max-width: 600px) {
+  .events-grid {
+    padding: 5px;
+  }
+}
+
+/* More styles as needed... */

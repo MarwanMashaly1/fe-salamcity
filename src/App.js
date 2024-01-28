@@ -11,7 +11,8 @@ import Faq from "./pages/Faq";
 import Guides from "./pages/Guides";
 import Mosques from "./pages/Mosques";
 import Donate from "./pages/Donate";
-import { Button } from "@mui/material";
+import Halaqas from "./pages/Halaqas";
+import NotFoundPage from "./pages/error404";
 
 function App() {
   return (
@@ -28,18 +29,8 @@ function App() {
             <Route path="/guides" element={<Guides />} />
             <Route path="/Mosques" element={<Mosques />} />
             <Route path="/donate" element={<Donate />} />
-            <Route
-              path="*"
-              element={
-                <div>
-                  <h1>404</h1>
-                  <p>Page not found</p>
-                  <Button variant="contained" href="/">
-                    Go to Home
-                  </Button>
-                </div>
-              }
-            />
+            <Route path="/halaqas" element={<Halaqas />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </div>
