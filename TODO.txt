@@ -14,9 +14,10 @@ General website
 EVENTS PAGE
 
 1. Add pagination - Done
-2. The cards has 2 buttons one to open the modal and the other redirects to website - Done
-3. create modal (more information, bigger image, link to website) - In progress
-4. when clicking the card it opens the modal - Done
+2. The cards has 2 buttons one to open the modal and the other redirects to website - Done - Done
+3. create modal (more information, bigger image, link to website) - In progress - In Progress (only description done)
+4. when clicking the card it opens the modal - Done - Done
+5. Add more filters
 
 Prayer Times Page 
 
@@ -36,6 +37,23 @@ Home Page
 2. to do that go to backend and add date to the list of things recieved - Delayed
 3. Get first 2 from each list - Done
 3. add featured posts properly - Done
+
+FAQ Page
+
+1. Implement Page Logic - Done
+2. Figure out FAQ questions in page - In Progress
+
+Mosques Page
+
+1. Create Card for each Masjid
+2. Card contains services, location, contact, images
+3. layout completed
+
+Guides Page
+
+1. Keep under construction until (100 users avg)
+2. seek sponsorship from businesses (maybe)
+3. will be done in version 2.0
 
 Guides Page (reach 200 avg)
 
