@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>SalamCity</title>
+  <link href="https://salamcity.ca"/>
+  <id>urn:uuid:12345678-1234-5678-1234-567812345678</id>
+  <updated>2024-01-01T00:00:00Z</updated>
+  
+  <!-- Add your entries here -->
+    <entry>
+        <title>Post Title</title>
+        <link href="https://salamcity.ca/posts/post-title"/>
+        <id>urn:uuid:12345678-1234-5678-1234-567812345678</id>
+        <updated>2024-01-01T00:00:00Z</updated>
+        <content type="html">
+        <![CDATA[
+            <p>Post content</p>
+        ]]>
+        </content>
+
+        <author>
+            <name>Author Name</name>
+            <email>
+
+            </email>
+        </author>
+    </entry>
+</feed>

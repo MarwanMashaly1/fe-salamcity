@@ -15,31 +15,15 @@ const Featured = ({ setLoading }) => {
 
   useEffect(() => {
     axios
-      .get("/api/v1/snmc/events")
+      .get("/api/v1/events/10")
       .then((response) => {
-        const snmcEvents = response.data.slice(0, 2);
-        const snmcEventsMapped = snmcEvents.map((event, index) => ({
-          title: event.title,
-          description: event[0],
-          image: event[1],
-          link: "",
-          org: "SNMC",
-          key: `snmc-${index}`,
-        }));
-        return snmcEventsMapped;
+        const uomsaEvents = response.data.slice(0, 2);
+        return uomsaEvents;
       })
-      .then((snmcEventsMapped) => {
-        return axios.get("/api/v1/masjidrahma/events").then((response) => {
-          const rahmaEvents = response.data.slice(0, 2);
-          const rahmaEventsMapped = rahmaEvents.map((event, index) => ({
-            title: event[0],
-            description: event[2][0],
-            image: event[2][1],
-            link: event[1],
-            org: "masjidRahma",
-            key: `rahma-${index}`,
-          }));
-          return [...snmcEventsMapped, ...rahmaEventsMapped];
+      .then((uomsaEvents) => {
+        return axios.get("/api/v1/events/4").then((response) => {
+          const kmaEvents = response.data.slice(0, 2);
+          return [...uomsaEvents, ...kmaEvents];
         });
       })
       .then((featuredEvents) => {
@@ -100,7 +84,7 @@ const Featured = ({ setLoading }) => {
                     <FeaturedCard
                       key={postIndex}
                       title={post.title}
-                      description={post.description}
+                      description={post.full_description}
                       image={post.image}
                       link={post.link}
                       org={post.org}

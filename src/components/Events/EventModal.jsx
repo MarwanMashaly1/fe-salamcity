@@ -4,6 +4,7 @@ import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const EventModal = ({ isModalOpen, closeModal, selectedEvent }) => (
   <Modal
@@ -26,19 +27,39 @@ const EventModal = ({ isModalOpen, closeModal, selectedEvent }) => (
         margin: "auto", // Center the modal horizontally
       }}
     >
-      <h2>{selectedEvent?.title}</h2>
-      <p
-        style={{
-          wordWrap: "break-word",
-          overflowWrap: "break-word",
-        }}
-      >
-        {selectedEvent?.description}
-      </p>
+      {selectedEvent?.image && (
+        <img
+          src={selectedEvent?.image}
+          alt={selectedEvent?.title}
+          style={{ width: "100%", height: "auto" }}
+        />
+      )}
+      <Typography variant="h4" component="div" gutterBottom>
+        {selectedEvent?.title}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        Organized by: {selectedEvent?.organization_name}
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        {selectedEvent?.full_description}
+      </Typography>
+      {selectedEvent?.start_time && (
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          Start Time: {selectedEvent?.start_time}
+        </Typography>
+      )}
+      {selectedEvent?.end_time && (
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          End Time: {selectedEvent?.end_time}
+        </Typography>
+      )}
+      <Typography variant="body2" color="text.secondary" gutterBottom>
+        More Info: <a href={selectedEvent?.link}>Click Here</a>
+      </Typography>
       <Button
         onClick={closeModal}
         variant="contained"
-        sx={{ backgroundColor: "#4a6741" }}
+        sx={{ backgroundColor: "#4a6741", mt: 2 }}
       >
         Close
       </Button>

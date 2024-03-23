@@ -14,8 +14,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../../images/logo.png";
 
-const pages = ["Home", "Prayer Times", "Events", "Contact"];
-const pages_links = ["/", "/prayertimes", "/events", "/contact"];
+const pages = ["Home", "Prayer Times", "Events", "Calendar", "Contact"];
+const pages_links = ["/", "/prayertimes", "/events", "/calendar", "/contact"];
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState("");

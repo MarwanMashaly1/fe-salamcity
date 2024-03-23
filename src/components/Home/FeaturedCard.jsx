@@ -4,14 +4,22 @@ import "../../styles/FeaturedCard.css";
 import snmc from "../../images/snmc_img.jpg";
 import masjidRahma from "../../images/MasjidRahma_img.jpg";
 import { AspectRatio } from "@mui/joy";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const FeaturedCard = ({ title, description, image, link, org }) => {
   // Check if the image URL is available
   const hasImage = image && image.trim() !== "";
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  let featuredRatio = 3 / 2;
+  if (isMobile) {
+    featuredRatio = 3 / 3;
+  }
 
   return (
     <Card className="featured-card">
-      <AspectRatio ratio={3 / 2} objectFit="fill">
+      <AspectRatio ratio={featuredRatio} objectFit="fill">
         <div className={`event-card-img ${hasImage ? "" : "no-image-box"}`}>
           {hasImage ? (
             <img src={image} alt={title} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -7,12 +7,27 @@ import {
   Button,
 } from "@mui/material";
 import "../styles/EventCard.css";
-import snmc from "../images/snmc_img.jpg";
-import rahma from "../images/MasjidRahma_img.jpg";
+import salamCity from "../images/logo.png";
+import axios from "axios";
 
 const EventCard = ({ title, description, image, link, onClick, org }) => {
+  const [orgImage, setOrgImage] = React.useState(null);
   // Check if the image URL is available
   const hasImage = image && image.trim() !== "";
+
+  useEffect(() => {
+    if (!hasImage && org) {
+      console.log("Fetching organization image");
+      axios
+        .get(`/api/v1/organizations/${org}/image`)
+        .then((response) => {
+          setOrgImage(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching organization image", error);
+        });
+    }
+  }, [hasImage, org]);
 
   const handleCardClick = () => {
     // Call the onClick prop passed from the parent component
@@ -33,26 +48,24 @@ const EventCard = ({ title, description, image, link, onClick, org }) => {
       <div className={`event-card-img ${hasImage ? "" : "no-image-box"}`}>
         {hasImage ? (
           <img src={image} alt={title} />
-        ) : org === "snmc" ? (
-          <img src={snmc} alt={title} />
-        ) : org === "Masjid ar-Rahma" ? (
-          <img src={rahma} alt={title} />
+        ) : orgImage ? (
+          <img
+            src={orgImage}
+            alt={title}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
         ) : (
-          <Typography variant="h6" className="event-card-org">
-            {org}
-          </Typography>
+          <img src={salamCity} alt="Salam City" />
         )}
       </div>
 
       <CardContent>
         <span className="event-card-span-title">
-          <Typography
-            variant="h6"
-            className="event-card-title"
-            sx={{
-              marginTop: "3%",
-            }}
-          >
+          <Typography variant="h6" className="event-card-title">
             {title}
           </Typography>
         </span>

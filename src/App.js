@@ -13,6 +13,7 @@ import Mosques from "./pages/Mosques";
 import Donate from "./pages/Donate";
 import Halaqas from "./pages/Halaqas";
 import NotFoundPage from "./pages/error404";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Mosques" element={<Mosques />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/halaqas" element={<Halaqas />} />
+            <Route path="/calendar" element={<Calendar />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>

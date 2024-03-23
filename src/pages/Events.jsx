@@ -16,107 +16,31 @@ import {
 } from "@mui/material";
 import Loader from "../utils/Loader";
 
-function validURL(str) {
-  var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  ); // fragment locator
-  return !!pattern.test(str);
-}
-
 const Events = () => {
-  const organizations = [
-    "All Organizations",
-    "UOMSA",
-    "SNMC",
-    "Masjid ar-Rahma",
-    "KMA",
-    "OMA",
-    "CUMSA",
-    "Jami Omar",
-    "Barrhaven Islamic Centre",
-  ];
+  const [organizations, setOrganizations] = useState([]);
   const [selectedOrganization, setSelectedOrganization] = useState("");
-  const [snmcEvents, setSNMCEvents] = useState([]);
-  const [rahmaEvents, setRahmaEvents] = useState([]);
-  const [kmaEvents, setKMAEvents] = useState([]);
-  const [omaEvents, setOMAEvents] = useState([]);
-  const [uomsaEvents, setUOMSAEvents] = useState([]);
-  const [cumsaEvents, setCUMSAEvents] = useState([]);
-  const [JamiOmarEvents, setJamiOmarEvents] = useState([]);
-  const [bicEvents, setBicEvents] = useState([]);
+  const [events, setEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const eventsPerPage = 12; // Number of events to display per page
-  let eventsToRender = [];
 
   useEffect(() => {
-    // Function to fetch events for an organization
-    const fetchEventsForOrganization = (organization, setEvents) => {
-      try {
-        return axios
-          .get(`api/v1/${organization.toLowerCase()}/events`)
-          .then((response) => setEvents(response.data));
-      } catch (error) {
-        console.error(`Error fetching ${organization} events:`, error);
-      }
-    };
+    // Fetch all organizations
+    axios
+      .get("/api/v1/organizations")
+      .then((response) => setOrganizations(response.data))
+      .catch((error) => console.error("Error fetching organizations:", error));
+    // Fetch all events
 
-    // List of organizations
-    const organizations = [
-      "UOMSA",
-      "SNMC",
-      "MasjidRahma",
-      "KMA",
-      "OMA",
-      "CUMSA",
-      "JamiOmar",
-      "barrhavenislamiccentre",
-    ];
-
-    // Fetch events for all organizations simultaneously
-    Promise.all(
-      organizations.map((organization) =>
-        fetchEventsForOrganization(organization, (events) => {
-          switch (organization) {
-            case "SNMC":
-              setSNMCEvents(events);
-              break;
-            case "MasjidRahma":
-              setRahmaEvents(events);
-              break;
-            case "KMA":
-              setKMAEvents(events);
-              break;
-            case "OMA":
-              setOMAEvents(events);
-              break;
-            case "UOMSA":
-              setUOMSAEvents(events);
-              break;
-            case "CUMSA":
-              setCUMSAEvents(events);
-              break;
-            case "JamiOmar":
-              setJamiOmarEvents(events);
-              break;
-            case "barrhavenislamiccentre":
-              setBicEvents(events);
-              break;
-            default:
-              break;
-          }
-        })
-      )
-    );
-    setIsLoading(false);
+    axios
+      .get("/api/v1/events")
+      .then((response) => {
+        setEvents(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error("Error fetching events:", error));
   }, []);
 
   const openModal = (event) => {
@@ -133,215 +57,43 @@ const Events = () => {
     setCurrentPage(value);
   };
 
+  const handleOrganizationChange = (event) => {
+    // Reset currentPage to 1 when organization filter changes
+    setCurrentPage(1);
+    setSelectedOrganization(event.target.value);
+  };
+
   const renderEvents = () => {
     const startIndex = (currentPage - 1) * eventsPerPage;
     const endIndex = startIndex + eventsPerPage;
 
-    if (selectedOrganization === "SNMC") {
-      eventsToRender = snmcEvents.map((event, index) => ({
-        title: event.title,
-        description: event[0],
-        image: event[1],
-        link: "snmc.ca",
-        key: index,
-        org: "SNMC",
-      }));
-    } else if (selectedOrganization === "Masjid ar-Rahma") {
-      eventsToRender = rahmaEvents.map((event, index) => ({
-        title: event[0],
-        description: event[2][0],
-        image: event[2][1],
-        link: event[1],
-        key: index,
-        org: "Masjid ar-Rahma",
-      }));
-    } else if (selectedOrganization === "KMA") {
-      eventsToRender = kmaEvents.map((event, index) => {
-        let descriptionText = "No Description Available";
-        let imageUrl = "";
+    const uomsaEvents = [];
+    const otherEvents = [];
 
-        if (event[7] && Array.isArray(event[7])) {
-          if (validURL(event[7][3])) {
-            descriptionText = event[7][0];
-            imageUrl = event[7][3];
-          } else if (validURL(event[7][0])) {
-            imageUrl = event[7][0];
-          }
-        }
-        return {
-          title: event[0] || "Untitled",
-          date: event[1],
-          time_start: event[2],
-          time_end: event[3],
-          location: event[4],
-          description: descriptionText,
-          image: imageUrl,
-          link: event[6] || "#",
-          key: index,
-        };
-      });
-    } else if (selectedOrganization === "OMA") {
-      eventsToRender = omaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4],
-        key: index,
-      }));
-    } else if (selectedOrganization === "UOMSA") {
-      eventsToRender = uomsaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4],
-        key: index,
-      }));
-    } else if (selectedOrganization === "CUMSA") {
-      eventsToRender = cumsaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4],
-        key: index,
-      }));
-    } else if (selectedOrganization === "Jami Omar") {
-      eventsToRender = JamiOmarEvents.map((event, index) => ({
-        title: event[1],
-        description: event[2] + ", " + event[4] + ". Link for it: " + event[3],
-        image: event[0],
-        link: "https://www.jamiomar.org/",
-        key: index,
-      }));
-    } else if (selectedOrganization === "Barrhaven Islamic Centre") {
-      eventsToRender = bicEvents.map((event, index) => {
-        if (event[0] === null) {
-          event[0] = "No Description Available";
-        }
-        return {
-          title: "",
-          description: event[0],
-          image: event[1],
-          link: event[4] || "",
-          key: `bic-${index}`,
-          org: "Barrhaven Islamic Centre",
-        };
-      });
-    } else {
-      // When "All Organizations" is selected, combine both SNMC and Rahma events
-      const snmcEventsMapped = snmcEvents.map((event, index) => ({
-        title: event.title, // Modify according to your SNMC event structure
-        description: event[0],
-        image: event[1], // Modify according to your SNMC event structure
-        link: "snmc.ca",
-        key: `snmc-${index}`,
-        org: "SNMC",
-      }));
+    // Filter events based on the selected organization
+    const filteredEvents = selectedOrganization
+      ? events.filter((event) => event.organization_id === selectedOrganization)
+      : events;
 
-      const rahmaEventsMapped = rahmaEvents.map((event, index) => ({
-        title: event[0],
-        description: event[2][0],
-        image: event[2][1],
-        link: event[1],
-        key: `rahma-${index}`,
-        org: "Masjid ar-Rahma",
-      }));
+    filteredEvents.forEach((event) => {
+      if (event.organization_id === 10) {
+        uomsaEvents.push(event);
+      } else {
+        otherEvents.push(event);
+      }
+    });
 
-      const kmaEventsMapped = kmaEvents.map((event, index) => {
-        let descriptionText = "No Description Available";
-        let imageUrl = "";
+    console.log(selectedEvent);
 
-        if (event[7] && Array.isArray(event[7])) {
-          if (validURL(event[7][3])) {
-            descriptionText = event[7][0];
-            imageUrl = event[7][3];
-          } else if (validURL(event[7][0])) {
-            imageUrl = event[7][0];
-          }
-        }
+    // const eventsToRender = filteredEvents.slice(startIndex, endIndex);
+    const eventsToRender = uomsaEvents
+      .concat(otherEvents)
+      .slice(startIndex, endIndex);
 
-        return {
-          title: event[0],
-          date: event[1],
-          time_start: event[2],
-          time_end: event[3],
-          location: event[4],
-          description: descriptionText,
-          image: imageUrl,
-          link: event[6],
-          key: `kma-${index}`,
-          org: "KMA",
-        };
-      });
-
-      const omaEventsMapped = omaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4] || "",
-        key: `oma-${index}`,
-        org: "OMA",
-      }));
-
-      const uomsaEventsMapped = uomsaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4] || "",
-        key: `uomsa-${index}`,
-        org: "UOMSA",
-      }));
-
-      const cumsaEventsMapped = cumsaEvents.map((event, index) => ({
-        title: "",
-        description: event[0],
-        image: event[1],
-        link: event[4] || "",
-        key: `cumsa-${index}`,
-        org: "CUMSA",
-      }));
-
-      const bicEventsMapped = bicEvents.map((event, index) => {
-        if (event[0] === null) {
-          event[0] = "No Description Available";
-        }
-        return {
-          title: "",
-          description: event[0],
-          image: event[1],
-          link: event[4] || "",
-          key: `bic-${index}`,
-          org: "Barrhaven Islamic Centre",
-        };
-      });
-
-      const jamiOmarEventsMapped = JamiOmarEvents.map((event, index) => ({
-        title: event[1],
-        description: event[2] + ", " + event[4] + ". Link for it: " + event[3],
-        image: event[0],
-        link: "https://www.jamiomar.org/",
-        key: `jamiOmar-${index}`,
-        org: "JamiOmar",
-      }));
-
-      eventsToRender = [
-        ...uomsaEventsMapped,
-        ...snmcEventsMapped,
-        ...rahmaEventsMapped,
-        ...kmaEventsMapped,
-        ...omaEventsMapped,
-        ...cumsaEventsMapped,
-        ...jamiOmarEventsMapped,
-        ...bicEventsMapped,
-      ];
-    }
-
-    // Filter out events that lack descriptions
-    eventsToRender = eventsToRender.filter((event) => event.description);
-
-    return eventsToRender.slice(startIndex, endIndex).map((event) => (
+    return eventsToRender.map((event) => (
       <Grid
         item
-        key={event.key}
+        key={event.id}
         xs={12}
         sm={6}
         md={6}
@@ -356,15 +108,30 @@ const Events = () => {
       >
         <EventCard
           title={event.title}
-          description={event.description}
+          description={event.full_description}
           image={event.image}
           link={event.link}
           onClick={() => openModal(event)}
-          org={event.org}
+          org={event.organization_id}
         />
       </Grid>
     ));
   };
+
+  const filteredEvents = selectedOrganization
+    ? events.filter((event) => event.organization_id === selectedOrganization)
+    : events;
+
+  const organizationsWithEvents = Array.from(
+    new Set(filteredEvents.map((event) => event.organization_id))
+  );
+
+  const filteredOrganizations = organizations.filter((organization) =>
+    organizationsWithEvents.includes(organization.id)
+  );
+  // Calculate the number of pages required to display all events
+  const pageCount = Math.ceil(filteredEvents.length / eventsPerPage);
+
   return (
     <div className="events">
       {isLoading ? (
@@ -390,9 +157,7 @@ const Events = () => {
               </InputLabel>
               <Select
                 value={selectedOrganization}
-                onChange={(event) =>
-                  setSelectedOrganization(event.target.value)
-                }
+                onChange={handleOrganizationChange}
                 className="org-select"
                 label="Organization"
                 inputProps={{
@@ -400,9 +165,10 @@ const Events = () => {
                   id: "organization-select",
                 }}
               >
-                {organizations.map((organization) => (
-                  <MenuItem value={organization} key={organization}>
-                    {organization}
+                <MenuItem value="">All Organizations</MenuItem>
+                {filteredOrganizations.map((organization) => (
+                  <MenuItem value={organization.id} key={organization.id}>
+                    {organization.name_short}
                   </MenuItem>
                 ))}
               </Select>
@@ -424,7 +190,7 @@ const Events = () => {
             }}
           >
             <Pagination
-              count={Math.ceil(eventsToRender.length / eventsPerPage)}
+              count={pageCount}
               page={currentPage}
               onChange={handlePageChange}
               color="primary"

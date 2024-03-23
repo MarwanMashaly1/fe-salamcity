@@ -8,7 +8,7 @@ General website
 6. Implement pages in the home page section (FAQ, ABout Us, Mosques, Donate, Guides) 
 7. Add survival guide that are made by different MSAs
 8. Get Feedback - Done
-9. if Feedback is good implement different institutions
+9. if Feedback is good implement different institutions - Done
 10. Implement any feedback gotten - Mostly Done
 
 EVENTS PAGE
@@ -145,14 +145,14 @@ List of All orgs:
 -------
 Feature List - In order:
 1. Mosques page - Done with 1.0
-2. improve events modal (1.1.0)
+2. improve events modal (1.1.0) 
 2. Public Google Calendar or # 5 also (improve seo) (1.2.0)
 3. Halaqas Page and (improve seo) (1.3.0)
-4. use cron jobs and databases (1.4.0)
+4. use cron jobs and databases (1.4.0) - Done
 5. Online Courses and (improve seo) (1.5.0)
 6. Location based filtering (1.6.0)
-7. Machine Learning Categorization (1.7.0)
-8. Local Guides Page (2.0)
+7. Machine Learning Categorization (2.0.0)
+8. Local Guides Page (3.0)
 
 --------
 

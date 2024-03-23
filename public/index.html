@@ -80,6 +80,24 @@
     <!-- <noscript>A place to find all the events happening in the city</noscript> -->
     <div id="root"></div>
     <h1 style="display: none">SalamCity</h1>
+    <!-- Add schema of website for markdown -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://salamcity.ca/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://salamcity.ca/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "SalamCity",
+          "url": "https://salamcity.ca/"
+        }
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
