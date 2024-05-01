@@ -12,14 +12,16 @@ const FeaturedCard = ({ title, description, image, link, org }) => {
   const hasImage = image && image.trim() !== "";
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  let featuredRatio = 3 / 2;
-  if (isMobile) {
-    featuredRatio = 3 / 3;
-  }
+  const featuredRatio = isMobile ? 1 : 1; // Making the image square on mobile for better viewing
 
   return (
-    <Card className="featured-card">
-      <AspectRatio ratio={featuredRatio} objectFit="fill">
+    <Card
+      className="featured-card"
+      sx={{
+        maxWidth: "600px",
+      }}
+    >
+      <AspectRatio ratio={featuredRatio} objectFit="fill" maxHeight={"450px"}>
         <div className={`event-card-img ${hasImage ? "" : "no-image-box"}`}>
           {hasImage ? (
             <img src={image} alt={title} />
@@ -77,32 +79,7 @@ const FeaturedCard = ({ title, description, image, link, org }) => {
             </Typography>
           </div>
         )}
-        {/* <span className="featured-card-span-title">
-          <Typography
-            variant="h6"
-            className="event-card-title"
-            sx={{
-              fontWeight: "bold",
-              fontSize: "1.2rem",
-              lineHeight: "1.5rem",
-              color: "#000000",
-              margin: "1rem",
-            }}
-          >
-            {title}
-          </Typography>
-        </span> */}
-        {/* <span className="featured-card-span-desc">
-          <Typography variant="body2" className="event-card-desc">
-            {description}
-          </Typography>
-        </span> */}
       </CardContent>
-      {/* <CardActions className="featured-card-actions">
-        <Button href={link} target="_blank" rel="noopener noreferrer">
-          Learn More
-        </Button>
-      </CardActions> */}
     </Card>
   );
 };

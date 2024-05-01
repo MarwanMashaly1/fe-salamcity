@@ -17,12 +17,17 @@ const Featured = ({ setLoading }) => {
     axios
       .get("/api/v1/events/10")
       .then((response) => {
-        const uomsaEvents = response.data.slice(0, 2);
+        // const uomsaEvents = response.data.slice(0, 2);
+
+        // slice to get last 2 events
+        const uomsaEvents = response.data.slice(-2);
         return uomsaEvents;
       })
       .then((uomsaEvents) => {
         return axios.get("/api/v1/events/4").then((response) => {
-          const kmaEvents = response.data.slice(0, 2);
+          // const kmaEvents = response.data.slice(0, 2);
+          // slice to get last 2 events
+          const kmaEvents = response.data.slice(-2);
           return [...uomsaEvents, ...kmaEvents];
         });
       })

@@ -41,7 +41,7 @@ Home Page
 FAQ Page
 
 1. Implement Page Logic - Done
-2. Figure out FAQ questions in page - In Progress
+2. Figure out FAQ questions in page - Done
 
 Mosques Page
 
@@ -136,7 +136,7 @@ List of All orgs:
 8. Qurtuba
 9. Jami Omar - 50%
 10. Masjid Bilal
-11. Bukhari Center
+11. Bukhari Center - 50%
 12. Islam Care Center
 13. Masjid Alsalam
 14. 
